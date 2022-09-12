@@ -1,6 +1,5 @@
 import { GenEdType } from "../common/types/genend";
 import { CourseModel } from "../models/course";
-import { RequestDto, RespsonseDto } from "./common";
 
 export class CourseDto {
   courseNo!: string;
@@ -34,18 +33,17 @@ export class CourseDto {
   }
 }
 
-export class CoursesDto extends RespsonseDto {
+export class CoursesDto {
   totalCourse: number;
   courses: CourseDto[];
 
   constructor(totalCourse: number, courses: CourseDto[]) {
-    super();
     this.totalCourse = totalCourse;
     this.courses = courses;
   }
 }
 
-export class CreateCourseDto extends RequestDto {
+export class CreateCourseDto {
   abbrName!: string;
   courseNameTh!: string;
   courseNameEn!: string;
@@ -55,11 +53,10 @@ export class CreateCourseDto extends RequestDto {
   genEdType!: GenEdType;
 
   constructor(partial: Partial<CreateCourseDto>) {
-    super();
     Object.assign(this, partial);
   }
 }
-export class UpdateCourseDto extends RequestDto {
+export class UpdateCourseDto {
   abbrName?: string;
   courseNameTh?: string;
   courseNameEn?: string;
@@ -69,7 +66,6 @@ export class UpdateCourseDto extends RequestDto {
   genEdType?: GenEdType;
 
   constructor(partial: Partial<CreateCourseDto>) {
-    super();
     Object.assign(this, partial);
   }
 }
