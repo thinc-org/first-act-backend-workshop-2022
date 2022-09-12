@@ -1,17 +1,11 @@
 import { Router } from "express";
-import {
-  getCourses,
-  getCourse,
-  postCourse,
-  patchCourse,
-  deleteCourse,
-} from "../controllers/course";
+import courseController from "../controllers/course";
 
 const router = Router();
-router.get("/course", getCourses);
-router.get("/course/:id", getCourse);
-router.post("/course", postCourse);
-router.patch("/course/:id", patchCourse);
-router.delete("/course/:id", deleteCourse);
+router.get("/course", courseController.getCourses);
+router.get("/course/:id", courseController.getCourse);
+router.post("/course", courseController.postCourse);
+router.patch("/course/:id", courseController.patchCourse);
+router.delete("/course/:id", courseController.deleteCourse);
 
 export default router;
