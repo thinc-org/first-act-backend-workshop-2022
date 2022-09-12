@@ -34,7 +34,7 @@ export class CourseDto {
   }
 }
 
-export class GetCoursesDto extends RespsonseDto {
+export class CoursesDto extends RespsonseDto {
   totalCourse: number;
   courses: CourseDto[];
 
@@ -42,15 +42,6 @@ export class GetCoursesDto extends RespsonseDto {
     super();
     this.totalCourse = totalCourse;
     this.courses = courses;
-  }
-}
-
-export class GetCourseDto extends RespsonseDto {
-  course: CourseDto;
-
-  constructor(course: CourseDto) {
-    super();
-    this.course = course;
   }
 }
 
