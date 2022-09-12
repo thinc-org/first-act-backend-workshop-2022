@@ -2,8 +2,16 @@ import { courses } from "../common/mocks/course";
 import { CreateCourseDto } from "../dto/course";
 import { CourseModel } from "../models/course";
 
+/**
+ * return all courses from the database
+ * @returns {CourseModel[]}
+ */
 const findCourses = () => courses.map((c) => new CourseModel(c));
 
+/**
+ * return a course by courseNo from the database
+ * @param courseNo a courseNo
+ */
 const findCourseByCourseNo = (courseNo: string) =>
   courses.find((c) => c.courseNo === courseNo);
 
@@ -21,6 +29,11 @@ const createCourse = (course: CreateCourseDto) => {
   return { ...newCourse } as CourseModel;
 };
 
+/**
+ * update a course by courseNo from the database
+ * @param courseNo a courseNo
+ * @param courseDto a value to update
+ */
 const updateCourse = (courseNo: string, courseDto: CreateCourseDto) => {
   const course = courses.find((c) => c.courseNo === courseNo);
   if (!course) {
@@ -36,6 +49,10 @@ const updateCourse = (courseNo: string, courseDto: CreateCourseDto) => {
   return { ...course } as CourseModel;
 };
 
+/**
+ * delete a course by courseNo in the database
+ * @param courseNo a courseNo
+ */
 const deleteCourseByCourseNo = (courseNo: string) => {
   const course = courses.find((c) => c.courseNo === courseNo);
   if (!course) {
