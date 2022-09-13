@@ -37,15 +37,15 @@ const createCourse = (course: CreateCourseDto) => {
 const updateCourse = (courseNo: string, courseDto: CreateCourseDto) => {
   const course = courses.find((c) => c.courseNo === courseNo);
   if (!course) {
-    return undefined;
+    return null;
   }
-  course.abbrName = courseDto.abbrName || course.abbrName;
-  course.courseNameTh = courseDto.courseNameTh || course.courseNameTh;
-  course.courseNameEn = courseDto.courseNameEn || course.courseNameEn;
-  course.department = courseDto.department || course.department;
-  course.credit = courseDto.credit || course.credit;
-  course.creditHours = courseDto.creditHours || course.creditHours;
-  course.genEdType = courseDto.genEdType || course.genEdType;
+  course.abbrName = courseDto.abbrName ?? course.abbrName;
+  course.courseNameTh = courseDto.courseNameTh ?? course.courseNameTh;
+  course.courseNameEn = courseDto.courseNameEn ?? course.courseNameEn;
+  course.department = courseDto.department ?? course.department;
+  course.credit = courseDto.credit ?? course.credit;
+  course.creditHours = courseDto.creditHours ?? course.creditHours;
+  course.genEdType = courseDto.genEdType ?? course.genEdType;
   return { ...course } as CourseModel;
 };
 
@@ -56,7 +56,7 @@ const updateCourse = (courseNo: string, courseDto: CreateCourseDto) => {
 const deleteCourseByCourseNo = (courseNo: string) => {
   const course = courses.find((c) => c.courseNo === courseNo);
   if (!course) {
-    return undefined;
+    return null;
   }
   const index = courses.indexOf(course);
   courses.splice(index, 1);

@@ -4,16 +4,16 @@ import { ErrorResponseDto } from "../dto/common";
 import { CourseDto, CreateCourseDto, CoursesDto } from "../dto/course";
 import courseRepo from "../repository/course";
 
- const getCourses = (req: Request, res: Response) => {
+const getCourses = (req: Request, res: Response) => {
   const coursesDto = CourseDto.fromModels(courseRepo.findCourses());
   const getCoursesDto = new CoursesDto(courses.length, coursesDto);
   res.status(200).json(getCoursesDto);
 };
 
- const getCourse = (req: Request, res: Response) => {
+const getCourse = (req: Request, res: Response) => {
   const id = req.params.id;
   const course = courseRepo.findCourseByCourseNo(id);
-  if (!course) {
+  if (course === undefined) {
     const error = new ErrorResponseDto("Course not found", 404);
     res.status(404).json(error);
     return;
@@ -22,17 +22,17 @@ import courseRepo from "../repository/course";
   res.status(200).json(courseDto);
 };
 
- const postCourse = (req: Request, res: Response) => {
+const postCourse = (req: Request, res: Response) => {
   const course = new CreateCourseDto(req.body);
   const newCourse = courseRepo.createCourse(course);
   const newCourseDto = CourseDto.fromModel(newCourse);
-  res.status(200).json(newCourseDto);
+  res.status(201).json(newCourseDto);
 };
 
- const patchCourse = (req: Request, res: Response) => {
+const patchCourse = (req: Request, res: Response) => {
   const id = req.params.id;
   const course = courseRepo.updateCourse(id, req.body);
-  if (!course) {
+  if (course === null) {
     const error = new ErrorResponseDto("Course not found", 404);
     res.status(404).json(error);
     return;
@@ -41,10 +41,10 @@ import courseRepo from "../repository/course";
   res.status(200).json(courseDto);
 };
 
- const deleteCourse = (req: Request, res: Response) => {
+const deleteCourse = (req: Request, res: Response) => {
   const id = req.params.id;
   const course = courseRepo.deleteCourseByCourseNo(id);
-  if (!course) {
+  if (course === null) {
     const error = new ErrorResponseDto("Course not found", 404);
     res.status(404).json(error);
     return;
