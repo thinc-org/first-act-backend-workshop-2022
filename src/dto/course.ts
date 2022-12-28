@@ -11,8 +11,8 @@ export class CourseDto {
   creditHours!: string;
   genEdType!: string;
 
-  constructor(partial: Partial<CourseDto>) {
-    Object.assign(this, partial);
+  constructor(model: CourseDto) {
+    Object.assign(this, model);
   }
 
   static fromModel(course: CourseModel) {
@@ -52,8 +52,8 @@ export class CreateCourseDto {
   creditHours!: string;
   genEdType!: GenEdType;
 
-  constructor(partial: Partial<CreateCourseDto>) {
-    Object.assign(this, partial);
+  constructor(model: CreateCourseDto) {
+    Object.assign(this, model);
   }
 }
 export class UpdateCourseDto {
@@ -65,7 +65,7 @@ export class UpdateCourseDto {
   creditHours?: string;
   genEdType?: GenEdType;
 
-  constructor(partial: Partial<CreateCourseDto>) {
-    Object.assign(this, partial);
+  constructor(model: CreateCourseDto) {
+    Object.assign(this, model);
   }
 }

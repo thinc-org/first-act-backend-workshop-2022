@@ -10,7 +10,8 @@ export class CourseModel {
   genEdType!: GenEdType;
   createdAt!: Date;
   updatedAt!: Date;
-  constructor(partial: Partial<CourseModel>) {
-    Object.assign(this, partial);
+
+  constructor(model: CourseModel) {
+    Object.assign(this, model);
   }
 }
